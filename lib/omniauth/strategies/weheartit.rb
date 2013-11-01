@@ -41,14 +41,9 @@ module OmniAuth
 
       private
 
-      # TODO: make it work from :client_options
-      def site
-        "https://www.weheartit.com"
-      end
-
       def get_urls
         {
-          "weheartit" => "#{site}/#{raw_info["username"]}",
+          "weheartit" => "https://www.weheartit.com/#{raw_info["username"]}",
           "personal" => raw_info["link"],
         }
       end
