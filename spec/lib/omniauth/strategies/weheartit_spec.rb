@@ -121,13 +121,8 @@ describe OmniAuth::Strategies::WeHeartIt do
     end
 
     it 'returns the token' do
-      @access_token.stub(:token) {
-        {
-          :access_token => "OTqSFa9zrh0VRGAZHH4QPJISCoynRwSy9FocUazuaU950EVcISsJo3pST11iTCiI",
-          :token_type => "bearer"
-        } }
-      subject.credentials['token'][:access_token].should eq('OTqSFa9zrh0VRGAZHH4QPJISCoynRwSy9FocUazuaU950EVcISsJo3pST11iTCiI')
-      subject.credentials['token'][:token_type].should eq('bearer')
+      @access_token.stub(:token) { "some-token" }
+      subject.credentials['token'].should eq('some-token')
     end
   end
 end
