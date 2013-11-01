@@ -8,7 +8,7 @@ module OmniAuth
       option :name, :weheartit
 
       option :client_options, {
-        :site => "https://api.weheartit.com/v2",
+        :site => "https://api.weheartit.com",
         :authorize_url => "/oauth/authorize"
       }
 
@@ -39,13 +39,14 @@ module OmniAuth
 
       private
 
+      # TODO: make it work from :client_options
       def site
-        "https://api.weheartit.com/v2"
+        "https://www.weheartit.com"
       end
 
       def get_urls
         {
-          "weheartit" => "#{site}/v2/users/#{raw_info["id"]}",
+          "weheartit" => "#{site}/#{raw_info["username"]}",
           "personal" => raw_info["link"],
         }
       end
@@ -58,7 +59,7 @@ module OmniAuth
       end
 
       def profile_info_path
-        "/user"
+        "/api/v2/user"
       end
     end
   end
