@@ -34,8 +34,6 @@ module OmniAuth
       end
 
       def raw_info
-        access_token.options[:param_name] = :access_token
-        access_token.options[:mode] = :query
         @raw_info ||= access_token.get(profile_info_path).parsed
       end
 
