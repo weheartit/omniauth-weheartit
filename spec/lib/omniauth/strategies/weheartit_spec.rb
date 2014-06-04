@@ -8,7 +8,7 @@ describe OmniAuth::Strategies::WeHeartIt do
   end.to_app }
 
   let(:request) { double('Request').stub(params: {}, cookies: {}, env: {}) }
-  let(:session) { double('Session')..stub(:delete).with('omniauth.state').and_return('state') }
+  let(:session) { double('Session').stub(:delete).with('omniauth.state').and_return('state') }
 
   before do
     OmniAuth.config.test_mode = true
@@ -69,7 +69,7 @@ describe OmniAuth::Strategies::WeHeartIt do
 
     context "info" do
       it 'returns the uid (required)' do
-        subject.uid.should eq(raw_info['id'])
+        subject.uid.should eq(raw_info['id'].to_s)
       end
 
       it 'returns the name (required)' do
